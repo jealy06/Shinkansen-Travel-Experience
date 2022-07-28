@@ -1,0 +1,38 @@
+y = []
+y_dict = {}
+for i in cat_cols:
+  y=[]
+  y.append(merged_df[i].unique())
+  y_dict[i] = y
+
+y_dict
+
+sort_cat = [np.nan,'Extremely Poor', 'Poor', 'Needs Improvement','Acceptable',
+         'Good','Excellent']
+#which categories to update
+#baggage handling has 6 lets see if it works 'Baggage_Handling''CheckIn_Service','Cleanliness','Ease_of_Online_Booking','Legroom','Onboard_Entertainment','Onboard_Service',
+#'Onboard_Wifi_Service','Online_Boarding','Online_Support',
+titles = ['Arrival_Time_Convenient','Catering','Seat_Comfort']
+next = {}
+for title in titles:
+  next[title] = sort_cat
+
+y_dict.update(next)
+y_dict
+
+list_values = list(y_dict.values())
+list_values
+
+n = []
+for i,first_data in enumerate(list_values):
+    if first_data[i] == 'numpy.ndarray':
+      print("yes")
+      print(type(second_data))
+
+type(list_values[0][0])
+
+oe = OrdinalEncoder(categories=list_values)
+
+fake_col = ['Gender','Type_Travel']
+
+z = oe.fit_transform(merge_copy[cat_cols])
